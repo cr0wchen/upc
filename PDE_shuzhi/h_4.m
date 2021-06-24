@@ -1,4 +1,5 @@
-% for solving problem about p143 
+% by cr0wchen
+% for solving problem about textbook p143 7.2
 clc; clear; close all;
 
 f = @(x, y, t) sin(pi .* x) .* cos(pi .* y) .* exp(-(pi.^2) ./ 8 .* t);
@@ -7,7 +8,7 @@ ft0 = @(x, y)sin(pi .* x) .* cos(pi .* y);
 J = 40;
 N = 1600;
 h = 1 / J;
-tao = 1 / N; r = tao / (h^2);
+tau = 1 / N; r = tau / (h^2);
 x = 0 + [1:J - 1] * h; y = 0 + [1:J - 1] * h;
 [X, Y] = meshgrid(x, y);
 

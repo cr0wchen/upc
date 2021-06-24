@@ -1,14 +1,15 @@
-% for solving problem about p141
+% by cr0wchen
+% for solving problem about textbook p141 7.1
 clc; clear; close all;
 
 ut = @(t, x) exp(-pi^2 .* t) .* cos(pi * x) + (1 - cos(t));
 f = @(t) sin(t);
 
 h = 1/40;
-tao = 1/3200;
+tau = 1/3200;
 r = 1/2;
 
-t = 0:tao:1;
+t = 0:tau:1;
 x = 0:h:1;
 J = length(x);
 N = length(t);
@@ -19,7 +20,7 @@ F(1,:) = ut(t,0);
 F(J,:) = ut(t,1);
 for n = 1:N -1
     for j = 2:J - 1
-        F(j, n + 1) = r * F(j - 1, n) + (1 - 2 * r) * F(j, n) + r * F(j + 1, n) + tao * f(t(n));
+        F(j, n + 1) = r * F(j - 1, n) + (1 - 2 * r) * F(j, n) + r * F(j + 1, n) + tau * f(t(n));
     end
 end
 

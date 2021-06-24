@@ -1,13 +1,14 @@
-% for solving problem about p141
+% by cr0wchen
+% for solving problem about textbook p141 7.1
 clc; clear; close all;
 ut = @(t, x) exp(-pi^2 .* t) .* cos(pi * x) + (1 - cos(t));
 f = @(t) sin(t);
 
 h = 1/40;
-tao = 1/3200;
+tau = 1/3200;
 r = 1/2;
 
-t = 0:tao:1;
+t = 0:tau:1;
 x = 0:h:1;
 J = length(x);
 N = length(t);
@@ -18,7 +19,7 @@ e = ones(J, 1);
 A = spdiags([r * e, (1 - 2 * r) * e, r * e], [-1, 0, 1], J, J);
 
 for n = 1:N -1
-    F(:, n + 1) = A * F(:, n) + tao * f(t(n));
+    F(:, n + 1) = A * F(:, n) + tau * f(t(n));
     F(1, n + 1) = ut(t(n + 1), 0);
     F(J, n + 1) = ut(t(n + 1), 1);
 end

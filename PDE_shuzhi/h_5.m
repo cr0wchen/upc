@@ -1,18 +1,19 @@
-% for solving problem about p157
+% by cr0wchen
+% for solving problem about textbook p157 1.5
 clc; clear; close all;
 
 ut = @(x, t) cos(4 * pi .* t) .* sin(4 * pi .* x) + (sin(8 * pi .* t) .* sin(8 * pi .* x)) / (8 * pi);
 ft0 = @(x) sin(4 * pi .* x);
 
 J = 400; N = 500;
-h = 1 / J; tao = 1 / N;
-r = tao / h;
-x = [1:J - 1] * h; t = [0:N] * tao;
+h = 1 / J; tau = 1 / N;
+r = tau / h;
+x = [1:J - 1] * h; t = [0:N] * tau;
 U = zeros(J - 1, N + 1);
 U(:, 1) = ft0(x);
 
 e = ones(J - 1, 1);
-U(:, 2) = tao * sin(8 * pi .* x') + sin(4 * pi .* x');
+U(:, 2) = tau * sin(8 * pi .* x') + sin(4 * pi .* x');
 
 A = spdiags([e, -2 * e, e], [-1, 0, 1], J - 1, J - 1);
 

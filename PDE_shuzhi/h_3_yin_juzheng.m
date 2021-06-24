@@ -1,4 +1,5 @@
-% for solving problem about p141
+% by cr0wchen
+% for solving problem about textbook p141 7.1
 clc; clear; close all;
 ut = @(t, x) exp(-pi^2 .* t) .* cos(pi * x) + (1 - cos(t));
 f = @(t) sin(t);
@@ -6,11 +7,11 @@ f = @(t) sin(t);
 J = 40;
 N = 1600;
 h = 1 / J;
-tao = 1 / N;
+tau = 1 / N;
 a = 1;
-r = a * tao / (h^2);
+r = a * tau / (h^2);
 
-t = [0:N - 1] * tao;
+t = [0:N - 1] * tau;
 x = [1:J - 1] * h;
 
 U = zeros(J - 1, N);
@@ -21,7 +22,7 @@ tVec = zeros(J - 1, 1);
 
 for n = 1:N -1
     tVec(1) = r * ut(t(n), 0); tVec(J - 1) = r * ut(t(n), 1);
-    U(:, n + 1) = A \ (U(:, n) + tao * f(t(n)) + tVec);
+    U(:, n + 1) = A \ (U(:, n) + tau * f(t(n)) + tVec);
 end
 
 [t_m, x_m] = meshgrid(t, [0, x, 1]);
