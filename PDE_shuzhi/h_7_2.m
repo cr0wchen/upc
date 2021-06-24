@@ -1,5 +1,5 @@
-%by cr0wchen
-% for solving problem about textbook p143 4(2)
+% by cr0wchen
+% for solving problem about textbook p175 4(2)
 clc; clear; close all;
 
 J = 600; N = 100;
